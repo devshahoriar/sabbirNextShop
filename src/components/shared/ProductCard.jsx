@@ -37,9 +37,13 @@ const ProductCard = () => {
             800
           </span>
         </p>
-        <Button size="sm" className="w-full text-white text-lg" >
+
+
+        <Button size="sm" className="w-full text-lg" >
           <TiShoppingCart />
         </Button>
+   
+
       </div>
     </Link>
   )

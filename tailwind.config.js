@@ -9,7 +9,11 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '5px',
+      padding: '10px',
+      screens: {
+        "xl": '1240px',
+        '2xl': '1240px',
+    }
     },
     extend: {
       colors: {

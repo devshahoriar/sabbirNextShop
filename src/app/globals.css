@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
-  @apply object-cover
+img {
+  @apply object-cover;
+}
+
+.bg_gr {
+  background: linear-gradient(
+ 0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 67%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
