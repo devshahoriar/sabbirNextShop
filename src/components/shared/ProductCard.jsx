@@ -5,10 +5,11 @@ import { IoMdStar } from 'react-icons/io'
 import { IoMdStarOutline } from 'react-icons/io'
 import pImg from '@/asset/p1.jpg'
 import { Button } from '../ui/Button'
+import Link from 'next/link'
 
 const ProductCard = () => {
   return (
-    <div className="p-2 border m-1 rounded-lg">
+    <Link href="/product/sss" className="p-2 border m-1 rounded-lg">
       <div className=''>
         <Image src={pImg} alt="product" />
       </div>
@@ -40,7 +41,7 @@ const ProductCard = () => {
           <TiShoppingCart />
         </Button>
       </div>
-    </div>
+    </Link>
   )
 }
 
