@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card, CardContent } from '@/components/ui/Card'
 import {
   Carousel,
@@ -11,18 +12,21 @@ const ProductsCarosel = () => {
   return (
     <div className="flex justify-center">
       <Carousel className="w-[350px] lg:w-[400px] xl:w-[500px]">
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index}>
-              <div className="">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
+        <CarouselContent className="aspect-square rounded-md">
+          <CarouselItem key={1}>
+            <img
+              className="h-full w-full object-cover"
+              src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
+              alt="product"
+            />
+          </CarouselItem>
+          <CarouselItem key={2}>
+            <img
+              className="h-full w-full object-cover"
+              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=1"
+              alt="product"
+            />
+          </CarouselItem>
         </CarouselContent>
         <CarouselPrevious className="left-2" />
         <CarouselNext className="right-2" />

@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import { TbCurrencyTaka } from 'react-icons/tb'
 import { TiShoppingCart } from 'react-icons/ti'
@@ -8,13 +9,17 @@ import { Button } from '../ui/Button'
 import Link from 'next/link'
 
 const ProductCard = () => {
+  const _hendelClick = (e) => {
+    e.preventDefault();
+   console.log("this is from buy link in product card");
+  }
   return (
     <Link href="/product/sss" className="p-2 border m-1 rounded-lg">
       <div className=''>
         <Image src={pImg} alt="product" />
       </div>
       <div className="mt-3">
-        <h2 className="line-clamp-2 font-bold text-lg leading-5">
+        <h2 className="line-clamp-2 font-bold text-lg leading-5 hover:underline">
           This is products name
         </h2>
         <p className=" text-sm bg-main w-fit px-3 font-semibold text-white bg-opacity-60 rounded-lg my-1">
@@ -39,7 +44,7 @@ const ProductCard = () => {
         </p>
 
 
-        <Button size="sm" className="w-full text-lg" >
+        <Button onClick={_hendelClick} size="sm" className="w-full text-lg text-white hover:-hue-rotate-30" >
           <TiShoppingCart />
         </Button>
    
