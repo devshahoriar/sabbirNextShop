@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/Card'
 import { cookies } from 'next/headers'
 
 const page = () => {
