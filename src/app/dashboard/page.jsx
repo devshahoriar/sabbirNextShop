@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/card'
 import { cookies } from 'next/headers'
 
-
 const page = () => {
   const cookie = cookies()
   console.log(cookie);
