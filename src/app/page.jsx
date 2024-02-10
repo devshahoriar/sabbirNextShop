@@ -4,8 +4,10 @@ import Header from '@/components/shared/Header'
 import HomeBanner from '@/components/shared/HomeBanner'
 import ProductsConteiner from '@/components/shared/ProductsConteiner'
 import { Separator } from '@/components/ui/Separator'
+import connectDB from '@/db/connectDB'
 
 const page = () => {
+  connectDB()
   return (
     <main>
       <Header />

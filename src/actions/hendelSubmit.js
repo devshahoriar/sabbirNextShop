@@ -26,3 +26,8 @@ export async function create(pv, data) {
   })
   redirect("/dashboard")
 }
+
+
+export const AddProductAdmin =async () =>{
+  console.log("kk");
+}
