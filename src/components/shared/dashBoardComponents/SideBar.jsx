@@ -17,7 +17,7 @@ const SideBar = ({ show, className }) => {
 
   const SideLink = ({ children, to }) => {
     const path = usePathname()
-    return <Link prefetch={false} onClick={matches ? show : null} className={`pl-5 block py-3 my-1 ${path === to ? "bg-main text-white" : ""}`} href={to}>{children}</Link>
+    return <Link onClick={matches ? show : null} className={`pl-5 block py-3 my-1 ${path === to ? "bg-main text-white" : ""}`} href={to}>{children}</Link>
   }
 
   return (
