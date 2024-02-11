@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" data-color-mode="light" className="light">
       <head>
       <link rel="shortcut icon" href="https://react-icons.github.io/react-icons/favicon.png"/>
       </head>

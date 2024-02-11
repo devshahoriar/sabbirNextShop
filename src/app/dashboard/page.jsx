@@ -8,11 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/Card'
-import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
 
 const page = () => {
-  const cookie = cookies()
-
+  const h = headers()
+  console.log(h.get('admin_email'));
   return (
     <DadcboardContainer>
       <div className="flex flex-wrap md:gap-10 gap-4 flex-col items-center md:flex-row md:items-start px-3 md:px-0">
@@ -36,5 +36,7 @@ const CardItem = ({ title, description }) => {
     </Card>
   )
 }
-
+export const metadata = {
+  title: 'Dashboard | Admin',
+}
 export default page

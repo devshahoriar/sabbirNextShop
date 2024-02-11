@@ -7,23 +7,28 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/Carousel'
+import Image from 'next/image'
 
 const ProductsCarosel = () => {
   return (
     <div className="flex justify-center">
       <Carousel className="w-[350px] lg:w-[400px] xl:w-[500px]">
         <CarouselContent className="aspect-square rounded-md">
-          <CarouselItem key={1}>
-            <img
+          <CarouselItem key={1} className="">
+            <Image
+              height={500}
+              width={500}
               className="h-full w-full object-cover"
               src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
               alt="product"
             />
           </CarouselItem>
           <CarouselItem key={2}>
-            <img
+            <Image
+              height={500}
+              width={500}
               className="h-full w-full object-cover"
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=1"
+              src="https://images.pexels.com/photos/3497065/pexels-photo-3497065.jpeg"
               alt="product"
             />
           </CarouselItem>

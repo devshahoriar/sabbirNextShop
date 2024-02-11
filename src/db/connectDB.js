@@ -5,7 +5,7 @@ const DATABASE_URL = process.env.DB_URI
 
 if (!DATABASE_URL) {
   throw new Error(
-    'Please define the DB_URI environment variable inside .env.local'
+    'Please define the DB_URI environment variable inside .env'
   )
 }
 
