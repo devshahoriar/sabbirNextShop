@@ -16,8 +16,8 @@ const ProductsCarosel = () => {
         <CarouselContent className="aspect-square rounded-md">
           <CarouselItem key={1} className="">
             <Image
-              height={500}
-              width={500}
+              height={400}
+              width={400}
               className="h-full w-full object-cover"
               src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
               alt="product"
@@ -25,8 +25,8 @@ const ProductsCarosel = () => {
           </CarouselItem>
           <CarouselItem key={2}>
             <Image
-              height={500}
-              width={500}
+              height={400}
+              width={400}
               className="h-full w-full object-cover"
               src="https://images.pexels.com/photos/3497065/pexels-photo-3497065.jpeg"
               alt="product"

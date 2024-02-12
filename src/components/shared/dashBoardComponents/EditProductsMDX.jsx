@@ -10,11 +10,10 @@ import dynamic from 'next/dynamic'
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 
-const EditProductsMDX = () => {
-  const [value, setValue] = useState('**Hello world!!!**')
+const EditProductsMDX = ({ data, onUpdate }) => {
   return (
     <div>
-      <MDEditor value={value} onChange={setValue} />
+      <MDEditor value={data} onChange={onUpdate} />
     </div>
   )
 }

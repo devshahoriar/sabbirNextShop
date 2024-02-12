@@ -7,7 +7,7 @@ export async function login_admin(pv, data) {
   const email = data?.get('email')
   const pass = data?.get('pass')
 
-  if (email !== process.env.ADMIN_EMAIL && pass !== process.env.ADMIN_PASS) {
+  if (email !== process.env.ADMIN_EMAIL || pass !== process.env.ADMIN_PASS) {
     return { error: 'Email and Password not mached' }
   }
 

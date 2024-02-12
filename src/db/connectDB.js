@@ -1,19 +1,25 @@
-import mongoose from "mongoose"
-
+import mongoose from 'mongoose'
 
 const DATABASE_URL = process.env.DB_URI
 
-if (!DATABASE_URL) {
-  throw new Error(
-    'Please define the DB_URI environment variable inside .env'
-  )
-}
+const connection = {}
 
 const connectDB = async () => {
-  if(mongoose.connections[0]) return mongoose.connections[0]
+  if (connection.isConnected) {
+    return
+  }
+  if (!DATABASE_URL) {
+    throw new Error('Please define the DB_URI environment variable inside .env')
+  }
   try {
-    return await mongoose.connect(DATABASE_URL)
+     const db = await mongoose.connect(DATABASE_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    })
+    connection.isConnected = db.connections[0].readyState
   } catch (error) {
+    console.log(error)
     throw error
   }
 }
