@@ -12,10 +12,7 @@ const connectDB = async () => {
     throw new Error('Please define the DB_URI environment variable inside .env')
   }
   try {
-     const db = await mongoose.connect(DATABASE_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+     const db = await mongoose.connect(DATABASE_URL)
     connection.isConnected = db.connections[0].readyState
   } catch (error) {
     console.log(error)
