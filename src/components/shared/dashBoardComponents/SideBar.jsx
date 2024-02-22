@@ -43,6 +43,9 @@ const SideBar = ({ show, className }) => {
           <MenuItem component={<SideLink to="/dashboard/addproduct" />}>
             Add Prouduct
           </MenuItem>
+          <MenuItem component={<SideLink to="/dashboard/addcate" />}>
+            Add Category
+          </MenuItem>
           <MenuItem component={<SideLink to="/dashboard/orders" />}>
             Orders
           </MenuItem>

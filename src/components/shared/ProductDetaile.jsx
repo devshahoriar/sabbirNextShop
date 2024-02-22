@@ -63,7 +63,7 @@ const ProductDetaile = () => {
       <Button
         onClick={() => setSeeFull((r) => !r)}
         size="sm"
-        className={`bg-transparent border ${seeFull ? 'mt-3' : 'mt-10'}`}
+        className={`bg-transparent border !text-[#666] ${seeFull ? 'mt-3' : 'mt-10'}`}
       >
         {seeFull ? 'See less details' : 'See full details'}
       </Button>

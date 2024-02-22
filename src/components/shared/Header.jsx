@@ -25,7 +25,7 @@ const Header = () => {
           </Link>
       <div className=' gap-2 hidden md:flex'>
         <Input placeholder="Search.."  />
-        <Button className="bg-transparent border-black text-[#666]">Search</Button>
+        <Button className="bg-transparent border-black !text-[#666]">Search</Button>
       </div>
       <div className="md:hidden">
         <IoSearch />

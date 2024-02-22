@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     mdx: String,
   },
   {
-    ttimestamps: true,
+    timestamps: true,
   }
 )
 

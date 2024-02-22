@@ -1,9 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Header from './Header'
-import SideBar from './SideBar'
-import dynamic from 'next/dynamic'
 import { useMediaQuery } from 'usehooks-ts'
+import dynamic from 'next/dynamic'
+
+const DynamicSidebar = dynamic(()=> import('./SideBar'),{ssr:false})
 
 const OutLIne = () => {
   const matches = useMediaQuery('(max-width: 768px)')
@@ -15,7 +16,8 @@ const OutLIne = () => {
   return (
     <>
       <Header show={_hendelShow} />
-      {showMobileSidebar && <SideBar  show={_hendelShow} />}
+      
+      {showMobileSidebar && <DynamicSidebar  show={_hendelShow} />}
     </>
   )
 }

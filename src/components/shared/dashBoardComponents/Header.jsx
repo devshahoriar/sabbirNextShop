@@ -6,7 +6,7 @@ const Header = ({show}) => {
   return(<header className="md:mx-14 mx-3">
     <div className="flex justify-between items-center py-3">
       <div className="">
-        <button className="text-lg" onClick={show}>
+        <button className="text-lg md:invisible" onClick={show}>
         <FaBars />
         </button>
       </div>

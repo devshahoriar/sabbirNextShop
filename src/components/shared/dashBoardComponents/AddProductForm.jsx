@@ -1,6 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
+
 import EditProductsMDX from '@/components/shared/dashBoardComponents/EditProductsMDX'
 import { Button } from '@/components/ui/Button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/Dialog'
 import { Input } from '@/components/ui/Input'
 import {
   Select,
@@ -11,8 +22,17 @@ import {
   SelectValue,
 } from '@/components/ui/Select'
 import { useState } from 'react'
+import ImagePreview from './ImagePreview'
+import AddImageDiyologBox from './AddImageDiyologBox'
 
 const AddProductForm = () => {
+  const [openAddCoverImage, setOpenAddCoverImage] = useState(false)
+  const [openAddOtherImage, setOpenOtherImage] = useState(false)
+
+  const [selectedPrimaryImages, setSelectedPrimaryImages] = useState([])
+  const [selectOtherImages, setSelectOtherImages] = useState([])
+
+  // input state ------> products
   const [product, setProduct] = useState({
     mdx: 'for help goto -> https://www.markdownguide.org',
   })
@@ -21,9 +41,10 @@ const AddProductForm = () => {
     setProduct({ ...product, [e.target.name]: e.target.value })
   }
 
+  // from submite hendeler
   const _hendel_submit = (e) => {
     e.preventDefault()
-    console.log(product);
+    console.log(product)
   }
 
   return (
@@ -41,6 +62,23 @@ const AddProductForm = () => {
         onChange={_hendelChange}
       />
       <Input placeholder="quentity" name="quan" onChange={_hendelChange} />
+
+      <div className="flex gap-3">
+        {/* primary image select */}
+        <AddImageDiyologBox
+          open={openAddCoverImage}
+          onChangeOpen={setOpenAddCoverImage}
+          images={selectedPrimaryImages}
+          setImages={setSelectedPrimaryImages}
+          title="Add Cover Image"
+          desc="Add products primary photo. Thats show on social media and other as
+          primary."
+          multiple={false}
+        />
+
+        {/* all image secelect */}
+        {/* <AddImageDiyologBox open={addImage} onOpen={setAddImage} image={addImage} setImage={setAddImage}/> */}
+      </div>
 
       <Select onValueChange={(e) => setProduct({ ...product, category: e })}>
         <SelectTrigger className="w-full">
