@@ -17,15 +17,4 @@ const POST = async (r) => {
   }
 }
 
-const GET = async (r) => {
-  try {
-    await connectDB()
-    const cat =await Category.find()
-    console.log(cat);
-    return NextResponse.json({ success: true, data: cat })
-  } catch (error) {
-    return NextResponse.json({ success: false, data: 'something error with db connect your developer.' })
-  }
-}
-
 export { POST }

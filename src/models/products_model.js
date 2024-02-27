@@ -2,15 +2,29 @@ import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema(
   {
-    name: String,
-    price: String,
-    primary_image: String,
-    other_Images: String,
+    name: { type: String, required: [true, 'Need product name.'] },
+    price: { type: String, required: [true, 'Need product price.'] },
+    primary_image: {
+      type: String,
+      required: [true, 'Need product primary image.'],
+    },
+    other_Images: {
+      type: String,
+      required: [true, 'Need product other image.'],
+    },
     descountPrice: String,
-    description: String,
-    quentity: Number,
+    description: {
+      type: String,
+      required: [true, 'Need product description.'],
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      required: [true, 'Product mast have category'],
+    },
+    quentity: String,
     size: String,
-    mdx: String,
+    mdx: { type: String, required: [true, 'Need product MDX.'] },
   },
   {
     timestamps: true,

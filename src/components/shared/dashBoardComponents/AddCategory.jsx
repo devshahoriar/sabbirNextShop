@@ -20,6 +20,7 @@ const AddCategory = ({ category }) => {
   const [openAddCAtegoryDiolog, setOpenAddCategoryDilog] = useState(false)
   const [categoryText, setCategoryText] = useState('')
   const [addCategoryErr, setAddCategoryErr] = useState('')
+  const [loading, setLoading] = useState(false)
   const route = useRouter()
 
   const _hendelSubmit = async () => {
@@ -28,6 +29,7 @@ const AddCategory = ({ category }) => {
       return
     }
     try {
+      setLoading(true)
       const res = await axios.post(
         '/api/admin/category',
         { title: categoryText },
@@ -38,6 +40,7 @@ const AddCategory = ({ category }) => {
       route.refresh()
       setOpenAddCategoryDilog(false)
       setCategoryText('')
+      setLoading(false)
     } catch (error) {
       setAddCategoryErr('Something error!')
       console.log(error)
@@ -75,7 +78,7 @@ const AddCategory = ({ category }) => {
             </div>
             <DialogFooter className="gap-2 !flex-row !justify-end !items-center">
               <p className="text-red-500 text-sm">{addCategoryErr}</p>
-              <Button onClick={_hendelSubmit}>Add</Button>
+              <Button onClick={_hendelSubmit} disabled={loading}>Add</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>

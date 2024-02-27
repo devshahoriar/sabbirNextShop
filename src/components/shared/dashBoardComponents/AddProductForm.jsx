@@ -24,8 +24,9 @@ import {
 import { useState } from 'react'
 import ImagePreview from './ImagePreview'
 import AddImageDiyologBox from './AddImageDiyologBox'
+import axios from 'axios'
 
-const AddProductForm = () => {
+const AddProductForm = ({ categories }) => {
   const [openAddCoverImage, setOpenAddCoverImage] = useState(false)
   const [openAddOtherImage, setOpenOtherImage] = useState(false)
 
@@ -44,9 +45,21 @@ const AddProductForm = () => {
   }
 
   // from submite hendeler
-  const _hendel_submit = (e) => {
+  const _hendel_submit = async (e) => {
     e.preventDefault()
-    console.log(product)
+    try {
+      const res = await axios.post(
+        '/api/admin/products',
+        {
+          ...product,
+          primary_image: primaryImageUrl,
+          other_Images: otherImageUrl,
+        },
+        { withCredentials: true }
+      )
+      console.log(res)
+    } catch (error) {}
+    console.log(product, primaryImageUrl, otherImageUrl)
   }
 
   return (
@@ -97,9 +110,11 @@ const AddProductForm = () => {
         </SelectTrigger>
         <SelectContent className="bg-white">
           <SelectGroup>
-            <SelectItem value="man">Man</SelectItem>
-            <SelectItem value="woman">Woman</SelectItem>
-            <SelectItem value="house">House</SelectItem>
+            {categories?.map((c) => (
+              <SelectItem key={c._id} value={c._id}>
+                {c.title}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>

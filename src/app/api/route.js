@@ -6,8 +6,8 @@ import { NextResponse } from "next/server"
 
 const GET =async (r) => {
   // const body = await r.json()
-  await connectDB()
-  await Category.deleteMany()
+  // await connectDB()
+  // await Category.deleteMany()
   return NextResponse.json({"sddf":"sdf"})
 }
 
