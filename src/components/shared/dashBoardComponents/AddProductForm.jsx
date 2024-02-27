@@ -32,6 +32,8 @@ const AddProductForm = () => {
   const [selectedPrimaryImages, setSelectedPrimaryImages] = useState([])
   const [selectOtherImages, setSelectOtherImages] = useState([])
 
+  const [primaryImageUrl, setPrimaryImageUrl] = useState('')
+  const [otherImageUrl, setOtherImageUrl] = useState('')
   // input state ------> products
   const [product, setProduct] = useState({
     mdx: 'for help goto -> https://www.markdownguide.org',
@@ -66,18 +68,27 @@ const AddProductForm = () => {
       <div className="flex gap-3">
         {/* primary image select */}
         <AddImageDiyologBox
-          open={openAddCoverImage}
-          onChangeOpen={setOpenAddCoverImage}
+          open={openAddOtherImage}
+          onChangeOpen={setOpenOtherImage}
           images={selectedPrimaryImages}
           setImages={setSelectedPrimaryImages}
           title="Add Cover Image"
           desc="Add products primary photo. Thats show on social media and other as
           primary."
           multiple={false}
+          onUplodedUrl={setPrimaryImageUrl}
         />
 
-        {/* all image secelect */}
-        {/* <AddImageDiyologBox open={addImage} onOpen={setAddImage} image={addImage} setImage={setAddImage}/> */}
+        <AddImageDiyologBox
+          open={openAddCoverImage}
+          onChangeOpen={setOpenAddCoverImage}
+          images={selectOtherImages}
+          setImages={setSelectOtherImages}
+          title="Add Other Image"
+          desc="Add products all images.
+          primary."
+          onUplodedUrl={setOtherImageUrl}
+        />
       </div>
 
       <Select onValueChange={(e) => setProduct({ ...product, category: e })}>

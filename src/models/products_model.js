@@ -4,9 +4,12 @@ const productSchema = new mongoose.Schema(
   {
     name: String,
     price: String,
+    primary_image: String,
+    other_Images: String,
     descountPrice: String,
     description: String,
     quentity: Number,
+    size: String,
     mdx: String,
   },
   {

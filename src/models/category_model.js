@@ -1,11 +1,15 @@
 import mongoose from 'mongoose'
 
-const category_schema = mongoose.Schema({
-  title: String,
-  description: String,
-})
+const CategorySchema = new mongoose.Schema(
+  {
+    title: String,
+  },
+  {
+    timestamps: true,
+  }
+)
 
 const Category =
-  mongoose.models.Category || mongoose.Schema('Category', category_schema)
-  
+  mongoose.models.Category || mongoose.model('Category', CategorySchema)
+
 export default Category

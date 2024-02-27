@@ -1,20 +1,14 @@
 import connectDB from "@/db/connectDB"
+import Category from "@/models/category_model"
 import Product from "@/models/products_model"
+import { NextResponse } from "next/server"
 
 
 const GET =async (r) => {
+  // const body = await r.json()
   await connectDB()
-  const products = new Product({
-    name: "this a products",
-    price: "100"
-  })
-  try {
-    
-    await products.save()
-  } catch (error) {
-    console.log(error);
-  }
-  return Response.json({messahe : products})
+  await Category.deleteMany()
+  return NextResponse.json({"sddf":"sdf"})
 }
 
 export {GET}
