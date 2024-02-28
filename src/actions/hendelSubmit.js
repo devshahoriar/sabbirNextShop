@@ -27,7 +27,3 @@ export async function login_admin(pv, data) {
   })
   redirect('/dashboard')
 }
-
-export const AddProductAdmin = async () => {
-  console.log('kk')
-}
