@@ -21,7 +21,7 @@ const SideBar = ({ show, className }) => {
   }
 
   return (
-    <div className="absolute top-0 left-0 bg-white h-screen bottom-0 z-10 shadow-lg md:shadow-none">
+    <div className="fixed top-0 left-0 bg-white h-screen bottom-0 z-10 shadow-lg md:shadow-none">
       <Sidebar width="300px" collapsed={colops} className="relative h-full">
         <div className="flex justify-center mt-5">
           <Image className="h-20 w-20" src={logo} alt="logo" />

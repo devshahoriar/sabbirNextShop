@@ -90,9 +90,9 @@ const AddCategory = ({ category }) => {
           products.
         </h2>
       ) : (
-        <div className="mt-2 grid grid-cols-3 gap-3 md:grid-cols-5 sm:grid-cols-4">
+        <div className="mt-2 flex flex-wrap gap-4">
           {category?.map((c) => {
-            return <div key={c?._id}>{c?.title}</div>
+            return <div className='bg-main text-white font-bold px-2 rounded-lg' key={c?._id}>{c?.title}</div>
           })}
         </div>
       )}

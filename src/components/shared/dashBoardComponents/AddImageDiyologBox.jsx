@@ -28,6 +28,7 @@ const AddImageDiyologBox = ({
   const refInput = useRef()
   const [uploadStatus, setUploadStatus] = useState(0)
   const [uploadErr, setUploadErr] = useState('')
+  const [uploadDone, setUploadDone] = useState(false)
   const _hendelUpload = async () => {
     const newUrls = []
     for (let index = 0; index < images.length; index++) {
@@ -40,9 +41,7 @@ const AddImageDiyologBox = ({
       const res = await axios.post(url, data, {
         onUploadProgress: (e) => {
           setUploadStatus(
-            Math.floor(
-              ((index + (e.loaded / e.total)) / images?.length)   * 100
-            )
+            Math.floor(((index + e.loaded / e.total) / images?.length) * 100)
           )
         },
       })
@@ -51,6 +50,7 @@ const AddImageDiyologBox = ({
         return
       }
       newUrls.push(res.data?.url)
+      setUploadDone(true)
     }
 
     onUplodedUrl(newUrls?.toString())
@@ -107,14 +107,29 @@ const AddImageDiyologBox = ({
               refInput.current.files = new DataTransfer().files
               setImages([])
               setUploadStatus(0)
+              setUploadDone(false)
             }}
             disabled={images?.length === 0}
           >
             Delete
           </Button>
-          <Button onClick={_hendelUpload} disabled={images?.length === 0}>
-            Upload
-          </Button>
+          {uploadDone ? (
+            <Button
+              onClick={() => {
+                onChangeOpen(false)
+                setUploadDone(false)
+              }}
+            >
+              Done
+            </Button>
+          ) : (
+            <Button
+              onClick={_hendelUpload}
+              disabled={images?.length === 0}
+            >
+              Upload
+            </Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

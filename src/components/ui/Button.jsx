@@ -37,7 +37,7 @@ const Button = React.forwardRef(
     return (
       <Comp
         
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className }))+" hover:opacity-90 transition-opacity"}
         ref={ref}
         {...props}
       />

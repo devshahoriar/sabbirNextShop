@@ -36,9 +36,7 @@ const AddProductForm = ({ categories }) => {
   const [primaryImageUrl, setPrimaryImageUrl] = useState('')
   const [otherImageUrl, setOtherImageUrl] = useState('')
   // input state ------> products
-  const [product, setProduct] = useState({
-    mdx: 'for help goto -> https://www.markdownguide.org',
-  })
+  const [product, setProduct] = useState({})
 
   const _hendelChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value })
@@ -54,29 +52,49 @@ const AddProductForm = ({ categories }) => {
           ...product,
           primary_image: primaryImageUrl,
           other_Images: otherImageUrl,
-        },
-        { withCredentials: true }
+        }
       )
       console.log(res)
-    } catch (error) {}
-    console.log(product, primaryImageUrl, otherImageUrl)
+      setProduct({})
+      setSelectedPrimaryImages([])
+      setSelectOtherImages([])
+    } catch (error) {
+      //hendel later
+    }
   }
 
   return (
     <form onSubmit={_hendel_submit} className="flex flex-col gap-5 mt-5">
-      <Input placeholder="Name" name="name" onChange={_hendelChange} />
-      <Input placeholder="Price" name="proce" onChange={_hendelChange} />
       <Input
+        value={product?.name ? product?.name : ''}
+        placeholder="Name"
+        name="name"
+        onChange={_hendelChange}
+      />
+      <Input
+        value={product?.price ? product?.price : ''}
+        placeholder="Price"
+        name="price"
+        onChange={_hendelChange}
+      />
+      <Input
+        value={product?.discount_price ? product?.discount_price : ''}
         placeholder="Discount Price"
         name="discount_price"
         onChange={_hendelChange}
       />
       <Input
+        value={product?.short_description ? product?.short_description : ''}
         placeholder="Sort Description"
         name="short_description"
         onChange={_hendelChange}
       />
-      <Input placeholder="quentity" name="quan" onChange={_hendelChange} />
+      <Input
+        value={product?.quan ? product?.quan : ''}
+        placeholder="quentity"
+        name="quan"
+        onChange={_hendelChange}
+      />
 
       <div className="flex gap-3">
         {/* primary image select */}
@@ -85,7 +103,11 @@ const AddProductForm = ({ categories }) => {
           onChangeOpen={setOpenOtherImage}
           images={selectedPrimaryImages}
           setImages={setSelectedPrimaryImages}
-          title="Add Cover Image"
+          title={
+            selectedPrimaryImages?.length > 0
+              ? selectedPrimaryImages.length + ' image selected'
+              : 'Add Other Image'
+          }
           desc="Add products primary photo. Thats show on social media and other as
           primary."
           multiple={false}
@@ -97,14 +119,18 @@ const AddProductForm = ({ categories }) => {
           onChangeOpen={setOpenAddCoverImage}
           images={selectOtherImages}
           setImages={setSelectOtherImages}
-          title="Add Other Image"
+          title={
+            selectOtherImages?.length > 0
+              ? selectOtherImages.length + ' images selected'
+              : 'Add Other Image'
+          }
           desc="Add products all images.
           primary."
           onUplodedUrl={setOtherImageUrl}
         />
       </div>
 
-      <Select onValueChange={(e) => setProduct({ ...product, category: e })}>
+      <Select value={product?.category ? product.category : ""} onValueChange={(e) => setProduct({ ...product, category: e })}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a products gatagory" />
         </SelectTrigger>
@@ -125,7 +151,7 @@ const AddProductForm = ({ categories }) => {
         />
       </div>
 
-      <Button className="text-white">Add</Button>
+      <Button className="text-white self-start w-[200px]">Add</Button>
     </form>
   )
 }
